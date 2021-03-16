@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=AirbnbDataLoader
+comment1.params=
+comment1.target=java.util.ArrayList\ load()
+comment1.text=\r\n\ Return\ an\ ArrayList\ containing\ the\ rows\ in\ the\ AirBnB\ London\ data\ set\ csv\ file.\r\n
+comment2.params=doubleString
+comment2.target=java.lang.Double\ convertDouble(java.lang.String)
+comment2.text=\r\n\r\n\ @param\ doubleString\ the\ string\ to\ be\ converted\ to\ Double\ type\r\n\ @return\ the\ Double\ value\ of\ the\ string,\ or\ -1.0\ if\ the\ string\ is\ \r\n\ either\ empty\ or\ just\ whitespace\r\n
+comment3.params=intString
+comment3.target=java.lang.Integer\ convertInt(java.lang.String)
+comment3.text=\r\n\r\n\ @param\ intString\ the\ string\ to\ be\ converted\ to\ Integer\ type\r\n\ @return\ the\ Integer\ value\ of\ the\ string,\ or\ -1\ if\ the\ string\ is\ \r\n\ either\ empty\ or\ just\ whitespace\r\n
+numComments=4
