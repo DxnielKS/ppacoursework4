@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Controller
+comment1.params=event
+comment1.target=void\ goRight(javafx.event.ActionEvent)
+comment2.params=event
+comment2.target=void\ goLeft(javafx.event.ActionEvent)
+comment3.params=url\ resourceBundle
+comment3.target=void\ initialize(java.net.URL,\ java.util.ResourceBundle)
+comment4.params=event
+comment4.target=void\ print(javafx.event.ActionEvent)
+numComments=5
