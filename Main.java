@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,21 +16,29 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.net.URL;
 
 
-public class GUI extends Application
+public class Main extends Application
 {
+    private volatile boolean finished = false;
+
+    FXMLLoader fxmlLoader;
+
     @Override
     public void start(Stage stage) throws Exception
     {
-//        BorderPane root = new BorderPane();
-//        root = create(root);
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        Scene scene = new Scene(root, 800,500);
-        stage.setTitle("AIRBNB PROJECT");
-        stage.setScene(scene);
+        URL viewLocation = getClass().getResource("main.fxml");
+        fxmlLoader = new FXMLLoader(viewLocation);
+        BorderPane root = fxmlLoader.load();
 
-        // Show the Stage (window)
+        Scene scene = new Scene(root, 800,500);
+        stage.setTitle("PROJECT");
+        stage.setScene(scene);
         stage.show();
+
     }
+
+    
+
 }
