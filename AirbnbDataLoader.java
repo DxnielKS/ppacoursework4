@@ -13,6 +13,7 @@ public class AirbnbDataLoader {
     /** 
      * Return an ArrayList containing the rows in the AirBnB London data set csv file.
      */
+    
     public ArrayList<AirbnbListing> load() {
         System.out.print("Begin loading Airbnb london dataset...");
         ArrayList<AirbnbListing> listings = new ArrayList<AirbnbListing>();
