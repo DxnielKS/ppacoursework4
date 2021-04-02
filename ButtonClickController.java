@@ -40,12 +40,6 @@ public class ButtonClickController implements Initializable {
     }
 
     public void display(String neighbourhood, ArrayList<AirbnbListing> listings) {
-
-        System.out.println(neighbourhood);
-        for (int i = 0;i<listings.size();i++) {
-            System.out.println(listings.get(i).getNeighbourhood());
-        }
-
         tableView.setItems(getListing(listings));
     }
 

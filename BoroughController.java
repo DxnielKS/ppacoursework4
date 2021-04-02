@@ -122,7 +122,7 @@ public class BoroughController implements Initializable {
     @FXML
     private void hello(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
-        System.out.println(neighbourhood);
+
         // create a new window here
         try {
 
