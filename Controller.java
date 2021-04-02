@@ -36,7 +36,7 @@ public class Controller implements Initializable{
     public static int min;
     public static int max;
 
-    private final Integer[] priceRange = {0, 500,1000,1500,2000,2500,3000,3500};
+    private final Integer[] priceRange = {0,20, 40,60,80,100,200,300,400,500,600,1000,1500,2000,2500,3000,5000,10000};
     @FXML
     private void goRight(ActionEvent event) {
         System.out.println("right");
@@ -78,8 +78,8 @@ public class Controller implements Initializable{
             StackPane boroughPane = boroughLoader.load();
             Stage stage = (Stage) minPrice.getScene().getWindow();
             ((BorderPane) stage.getScene().getRoot()).setCenter(boroughPane);
-        } catch (IOException ignored) {
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
