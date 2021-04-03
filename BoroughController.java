@@ -26,11 +26,9 @@ public class BoroughController implements Initializable {
     //FXML fields
     @FXML
     private Button Enfield, Waltham, Westminster, Hillingdon, Havering, Wandsworth,Lewisham, Tower, Hounslow, Redbridge, Southwark, Camden, Bromley, Lambeth, Kensington, Islington, Barnet, Richmond, Kingston, Harrow, Sutton, Haringey, Brent, Bexley, Hackney, Greenwich, Hammersmith, Merton, Croydon, Newham, Ealing,City, Barking;
-
     @FXML
     private Label EnfieldLabel, WalthamLabel, WestminsterLabel, HillingdonLabel, HaveringLabel, WandsworthLabel,LewishamLabel, TowerLabel, HounslowLabel, RedbridgeLabel, SouthwarkLabel, CamdenLabel, BromleyLabel, LambethLabel, KensingtonLabel, IslingtonLabel, BarnetLabel, RichmondLabel, KingstonLabel, HarrowLabel, SuttonLabel, HaringeyLabel, BrentLabel, BexleyLabel, HackneyLabel, GreenwichLabel, HammersmithLabel, MertonLabel, CroydonLabel, NewhamLabel, EalingLabel,CityLabel, BarkingLabel;
-
-
+    //Fields
     private ArrayList<AirbnbListing> listings = new ArrayList<>();
     private ArrayList<String> distinctneighbourhoods;
     private ArrayList<Label> labels;
@@ -138,19 +136,16 @@ public class BoroughController implements Initializable {
     private void hello(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("buttonClick.fxml"));
             ScrollPane root = fxmlLoader.load();
             ((ButtonClickController)fxmlLoader.getController()).display(neighbourhood,filterListings(neighbourhood,listings));
             Stage stage = new Stage();
             stage.setTitle(neighbourhood);
             stage.setScene(new Scene(root));
-
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**

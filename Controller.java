@@ -34,7 +34,7 @@ public class Controller implements Initializable{
     // min and max price
     public static int min;
     public static int max;
-    //values for price range
+    //values for price range (possibly add/remove some)
     private final Integer[] priceRange = {0,20, 40,60,80,100,200,300,400,500,600,1000,1500,2000,2500,3000,5000,10000};
 
     /**
@@ -44,7 +44,6 @@ public class Controller implements Initializable{
     @FXML
     private void goRight(ActionEvent event) {
         System.out.println("right");
-
     }
 
     /**
