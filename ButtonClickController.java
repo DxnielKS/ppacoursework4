@@ -3,15 +3,19 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,7 +53,7 @@ public class ButtonClickController implements Initializable {
     }
 
     /**
-     * Populate the table
+     * Gives the table access to the (filtered) data
      * @param neighbourhood
      * @param listings
      */
@@ -62,10 +66,25 @@ public class ButtonClickController implements Initializable {
      * When an entry in the table is clicked, display extra information.
      */
     public void entryClick() {
-        System.out.println(tableView.getSelectionModel().selectedItemProperty().get().getName());
         // make a new window to display this information
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("entryClick.fxml"));
+        try {
+            Stage stage = new Stage();
+            stage.setTitle(tableView.getSelectionModel().selectedItemProperty().get().getNeighbourhood());
+            stage.setScene(new Scene(fxmlLoader.load()));
+            ((entryClickController) fxmlLoader.getController()).setAirbnbListingToDisplay(tableView.getSelectionModel().selectedItemProperty().get());
+            stage.show();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
 
     }
 
-    //SORT THE TABLE
+    /**
+     *
+     */
+    private void sortTheTable() {
+        //Sort the table here
+    }
+
 }

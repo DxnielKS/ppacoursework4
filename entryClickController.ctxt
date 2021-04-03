@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=entryClickController
+comment1.params=url\ resourceBundle
+comment1.target=void\ initialize(java.net.URL,\ java.util.ResourceBundle)
+numComments=2
