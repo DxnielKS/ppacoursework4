@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class BoroughController implements Initializable {
 
-
+    //FXML fields
     @FXML
     private Button Enfield, Waltham, Westminster, Hillingdon, Havering, Wandsworth,Lewisham, Tower, Hounslow, Redbridge, Southwark, Camden, Bromley, Lambeth, Kensington, Islington, Barnet, Richmond, Kingston, Harrow, Sutton, Haringey, Brent, Bexley, Hackney, Greenwich, Hammersmith, Merton, Croydon, Newham, Ealing,City, Barking;
 
@@ -32,22 +32,27 @@ public class BoroughController implements Initializable {
 
 
     private ArrayList<AirbnbListing> listings = new ArrayList<>();
-    private HashSet<String> distinctNeighbourhoods;
-    private ArrayList<String> neighbourhoods;
+    private ArrayList<String> distinctneighbourhoods;
     private ArrayList<Label> labels;
 
+    /**
+     * Initialize the controller
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AirbnbDataLoader airbnbDataLoader = new AirbnbDataLoader();
         listings = airbnbDataLoader.load();
-        distinctNeighbourhoods = new HashSet<String>();
-        distinctNeighbourhoods = getdistinctBorough(listings);
-        neighbourhoods = new ArrayList<String>(distinctNeighbourhoods);
+        distinctneighbourhoods = new ArrayList<String>(getdistinctBorough(listings));
         labels = new ArrayList<Label>();
         addLabels();
         showLabel();
     }
 
+    /**
+     * Populate the labels list
+     */
     private void addLabels() {
         labels.add(EnfieldLabel);
         labels.add(WalthamLabel);
@@ -60,7 +65,6 @@ public class BoroughController implements Initializable {
         labels.add(HounslowLabel);
         labels.add(RedbridgeLabel);
         labels.add(SouthwarkLabel);
-
         labels.add(CamdenLabel);
         labels.add(BromleyLabel);
         labels.add(LambethLabel);
@@ -71,7 +75,6 @@ public class BoroughController implements Initializable {
         labels.add(KingstonLabel);
         labels.add(HarrowLabel);
         labels.add(SuttonLabel);
-
         labels.add(HaringeyLabel);
         labels.add(BrentLabel);
         labels.add(BexleyLabel);
@@ -82,25 +85,26 @@ public class BoroughController implements Initializable {
         labels.add(CroydonLabel);
         labels.add(NewhamLabel);
         labels.add(EalingLabel);
-
         labels.add(CityLabel);
         labels.add(BarkingLabel);
-
-        
     }
 
+    /**
+     * Will update the labels with the number of properties available
+     * everytime the price range is updated
+     */
     private void showLabel() {
         int count = 0;
-        for (int y = 0;y<neighbourhoods.size();y++) {
+        for (int y = 0;y<distinctneighbourhoods.size();y++) {
             for (int i = 0;i<listings.size();i++) {
-                if (neighbourhoods.get(y).equals(listings.get(i).getNeighbourhood())) {
+                if (distinctneighbourhoods.get(y).equals(listings.get(i).getNeighbourhood())) {
                     if (listings.get(i).getPrice() <= Controller.max && listings.get(i).getPrice() >= Controller.min)
                         count++;
                     }
                 }
-            for (int x = 0; x < neighbourhoods.size();x++) {
+            for (int x = 0; x < distinctneighbourhoods.size();x++) {
 
-                if (labels.get(x).getText().equals(neighbourhoods.get(y))) {
+                if (labels.get(x).getText().equals(distinctneighbourhoods.get(y))) {
                     labels.get(x).setText("" + count);
                 }
             }
@@ -108,6 +112,12 @@ public class BoroughController implements Initializable {
         }
     }
 
+    /**
+     * Filters the list for all properties within the borough and within  the price range
+     * @param name
+     * @param listings
+     * @return filtered
+     */
     private ArrayList<AirbnbListing> filterListings(String name, ArrayList<AirbnbListing> listings) {
         ArrayList<AirbnbListing> filtered = new ArrayList<>();
         for (int i =0;i<listings.size();i++) {
@@ -118,19 +128,22 @@ public class BoroughController implements Initializable {
         return filtered;
     }
 
-
+    /**
+     * Handles event when a button is pressed.
+     * Creates a new a table view of all the properties in that borough within that price range
+     * ButtonClickController is the controller class
+     * @param event
+     */
     @FXML
     private void hello(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
-
-        // create a new window here
         try {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("buttonClick.fxml"));
             ScrollPane root = fxmlLoader.load();
             ((ButtonClickController)fxmlLoader.getController()).display(neighbourhood,filterListings(neighbourhood,listings));
             Stage stage = new Stage();
-            stage.setTitle("Second window");
+            stage.setTitle(neighbourhood);
             stage.setScene(new Scene(root));
 
             stage.show();
@@ -140,6 +153,11 @@ public class BoroughController implements Initializable {
 
     }
 
+    /**
+     * Uses a hashset to get all the distinct boroughs in the data
+     * @param listings
+     * @return
+     */
     private HashSet<String> getdistinctBorough(ArrayList<AirbnbListing> listings) {
         HashSet<String> distinctNeighbourhoods = new HashSet<>();
         for (AirbnbListing listing : listings) {

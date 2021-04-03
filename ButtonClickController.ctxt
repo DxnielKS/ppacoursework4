@@ -2,8 +2,12 @@
 comment0.target=ButtonClickController
 comment1.params=url\ resourceBundle
 comment1.target=void\ initialize(java.net.URL,\ java.util.ResourceBundle)
-comment2.params=neighbourhood\ listings
-comment2.target=void\ display(java.lang.String,\ java.util.ArrayList)
-comment3.params=airbnbListings
-comment3.target=javafx.collections.ObservableList\ getListing(java.util.ArrayList)
-numComments=4
+comment2.params=observableValue\ airbnbListing\ t1
+comment2.target=void\ changed(javafx.beans.value.ObservableValue,\ AirbnbListing,\ AirbnbListing)
+comment3.params=neighbourhood\ listings
+comment3.target=void\ display(java.lang.String,\ java.util.ArrayList)
+comment4.params=airbnbListings
+comment4.target=javafx.collections.ObservableList\ getListing(java.util.ArrayList)
+comment5.params=event
+comment5.target=void\ entryClick(java.awt.event.ActionEvent)
+numComments=6

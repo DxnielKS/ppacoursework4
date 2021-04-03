@@ -26,28 +26,41 @@ import java.util.ResourceBundle;
 
 
 public class Controller implements Initializable{
-
+    //FXML fields
     @FXML
     private ChoiceBox<Integer> minPrice;
-
     @FXML
     private ChoiceBox<Integer> maxPrice;
-
+    // min and max price
     public static int min;
     public static int max;
-
+    //values for price range
     private final Integer[] priceRange = {0,20, 40,60,80,100,200,300,400,500,600,1000,1500,2000,2500,3000,5000,10000};
+
+    /**
+     * Place holder for whent he right button is pressed
+     * @param event
+     */
     @FXML
     private void goRight(ActionEvent event) {
         System.out.println("right");
 
     }
 
+    /**
+     * Placeholder for when the left button is pressed
+     * @param event
+     */
     @FXML
     private void goLeft(ActionEvent event) {
         System.out.println("left");
     }
 
+    /**
+     * Populate the pricerange choice boxes and their actions
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         minPrice.getItems().addAll(priceRange);
@@ -57,6 +70,10 @@ public class Controller implements Initializable{
         maxPrice.setOnAction(this::maxChoice);
     }
 
+    /**
+     * updates min with the choice and if min < max then display the "map"
+     * @param event
+     */
     private void minChoice(ActionEvent event) {
         min = minPrice.getSelectionModel().getSelectedItem();
         if (min < max) {
@@ -64,6 +81,10 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * update max with the choice and if min < max then display the "map"
+     * @param event
+     */
     private void maxChoice(ActionEvent event) {
         max = maxPrice.getSelectionModel().getSelectedItem();
         if (min < max) {
@@ -71,6 +92,9 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * display the "map" BoroughController.java is the controller class
+     */
     private void display() {
         URL viewLocation = getClass().getResource("borough.fxml");
         FXMLLoader boroughLoader = new FXMLLoader(viewLocation);
