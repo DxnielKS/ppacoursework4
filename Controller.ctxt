@@ -17,5 +17,5 @@ comment5.target=void\ maxChoice(javafx.event.ActionEvent)
 comment5.text=\r\n\ update\ max\ with\ the\ choice\ and\ if\ min\ <\ max\ then\ display\ the\ "map"\r\n\ @param\ event\r\n
 comment6.params=
 comment6.target=void\ display()
-comment6.text=\r\n\ display\ the\ "map"\ BoroughController.java\ is\ the\ controller\r\n
+comment6.text=\r\n\ display\ the\ "map"\ BoroughController.java\ is\ the\ controller\ class\r\n
 numComments=7

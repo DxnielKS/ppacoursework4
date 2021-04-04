@@ -21,8 +21,6 @@ import java.net.URL;
 
 public class Main extends Application
 {
-    private volatile boolean finished = false;
-
     FXMLLoader fxmlLoader;
 
     @Override
@@ -32,9 +30,10 @@ public class Main extends Application
         fxmlLoader = new FXMLLoader(viewLocation);
         BorderPane root = fxmlLoader.load();
 
-        Scene scene = new Scene(root, 800,500);
+        Scene scene = new Scene(root);
         stage.setTitle("PROJECT");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
     }

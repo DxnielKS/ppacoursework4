@@ -31,6 +31,8 @@ public class Controller implements Initializable{
     private ChoiceBox<Integer> minPrice;
     @FXML
     private ChoiceBox<Integer> maxPrice;
+    @FXML
+    private Label titleLabel;
     // min and max price
     public static int min;
     public static int max;
@@ -38,21 +40,25 @@ public class Controller implements Initializable{
     private final Integer[] priceRange = {0,20, 40,60,80,100,200,300,400,500,600,1000,1500,2000,2500,3000,5000,10000};
 
     /**
-     * Place holder for whent he right button is pressed
+     * For when the right button is pressed
      * @param event
      */
     @FXML
     private void goRight(ActionEvent event) {
-        System.out.println("right");
+        if (min < max) {
+            display();
+        }
     }
 
     /**
-     * Placeholder for when the left button is pressed
+     * For when the left button is pressed
      * @param event
      */
     @FXML
     private void goLeft(ActionEvent event) {
-        System.out.println("left");
+        if (min < max) {
+            display();
+        }
     }
 
     /**
@@ -64,9 +70,9 @@ public class Controller implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         minPrice.getItems().addAll(priceRange);
         maxPrice.getItems().addAll(priceRange);
-
         minPrice.setOnAction(this::minChoice);
         maxPrice.setOnAction(this::maxChoice);
+        titleLabel.setText("Make a selection with min < max");
     }
 
     /**
@@ -75,9 +81,6 @@ public class Controller implements Initializable{
      */
     private void minChoice(ActionEvent event) {
         min = minPrice.getSelectionModel().getSelectedItem();
-        if (min < max) {
-            display();
-        }
     }
 
     /**
@@ -86,9 +89,6 @@ public class Controller implements Initializable{
      */
     private void maxChoice(ActionEvent event) {
         max = maxPrice.getSelectionModel().getSelectedItem();
-        if (min < max) {
-            display();
-        }
     }
 
     /**

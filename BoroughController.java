@@ -50,6 +50,7 @@ public class BoroughController implements Initializable {
 
     /**
      * Populate the labels list
+     * (FIND A BETTER WAY TO DO THIS0)
      */
     private void addLabels() {
         labels.add(EnfieldLabel);
@@ -142,6 +143,7 @@ public class BoroughController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(neighbourhood);
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

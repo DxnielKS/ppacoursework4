@@ -30,6 +30,7 @@ public class ButtonClickController implements Initializable {
     @FXML private TableColumn<AirbnbListing, Integer> numberOfReviewsCollumn;
     @FXML private TableColumn<AirbnbListing, Integer> minnumberOfNights;
 
+
     private ArrayList<AirbnbListing> airbnbListings;
 
     /**
@@ -72,6 +73,7 @@ public class ButtonClickController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle(tableView.getSelectionModel().selectedItemProperty().get().getNeighbourhood());
             stage.setScene(new Scene(fxmlLoader.load()));
+            stage.setResizable(false);
             ((entryClickController) fxmlLoader.getController()).setAirbnbListingToDisplay(tableView.getSelectionModel().selectedItemProperty().get());
             stage.show();
         } catch (IOException exception) {
@@ -85,6 +87,7 @@ public class ButtonClickController implements Initializable {
      */
     private void sortTheTable() {
         //Sort the table here
+
     }
 
 }
