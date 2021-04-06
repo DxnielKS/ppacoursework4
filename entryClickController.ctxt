@@ -2,4 +2,7 @@
 comment0.target=entryClickController
 comment1.params=url\ resourceBundle
 comment1.target=void\ initialize(java.net.URL,\ java.util.ResourceBundle)
-numComments=2
+comment2.params=airbnbListingToDisplay
+comment2.target=void\ setAirbnbListingToDisplay(AirbnbListing)
+comment2.text=\n\n\ @param\ airbnbListingToDisplay\n
+numComments=3
