@@ -72,7 +72,7 @@ public class Controller implements Initializable{
         maxPrice.getItems().addAll(priceRange);
         minPrice.setOnAction(this::minChoice);
         maxPrice.setOnAction(this::maxChoice);
-        titleLabel.setText("Make a selection with min < max");
+        titleLabel.setText("Welcome! Make a selection on the right hand side.");
     }
 
     /**
@@ -95,6 +95,7 @@ public class Controller implements Initializable{
      * display the "map" BoroughController.java is the controller class
      */
     private void display() {
+        titleLabel.setText("Now click a borough");
         URL viewLocation = getClass().getResource("borough.fxml");
         FXMLLoader boroughLoader = new FXMLLoader(viewLocation);
         try {

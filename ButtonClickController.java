@@ -82,12 +82,5 @@ public class ButtonClickController implements Initializable {
 
     }
 
-    /**
-     *
-     */
-    private void sortTheTable() {
-        //Sort the table here
-
-    }
 
 }

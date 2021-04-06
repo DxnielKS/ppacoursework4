@@ -14,7 +14,7 @@
             <Image url="@boroughs.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="644.0" prefWidth="906.0">
+      <AnchorPane prefHeight="277.0" prefWidth="906.0">
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="616.0" prefWidth="906.0">
                <children>

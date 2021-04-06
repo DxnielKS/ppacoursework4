@@ -30,7 +30,7 @@ public class Main extends Application
         fxmlLoader = new FXMLLoader(viewLocation);
         BorderPane root = fxmlLoader.load();
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1300, 860);
         stage.setTitle("PROJECT");
         stage.setScene(scene);
         stage.setResizable(false);
