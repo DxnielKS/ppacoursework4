@@ -1,5 +1,3 @@
-package src.main.java;
-
 /**
  * Represents one listing of a property for rental on Airbnb.
  * This is essentially one row in the data table. Each column

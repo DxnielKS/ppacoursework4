@@ -1,5 +1,3 @@
-package src.main.java;
-
 import com.opencsv.CSVReader;
 
 import java.io.File;
