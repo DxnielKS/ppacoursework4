@@ -30,6 +30,8 @@ public class Controller implements Initializable{
     private Button leftButton;
 
     private boolean validPriceRange;
+    //Flag to know if its been of the first page ever
+    private boolean firstPageFlag;
 
     private int count ;
     // min and max price
@@ -43,37 +45,29 @@ public class Controller implements Initializable{
      */
     @FXML
     private void goRight(ActionEvent event) {
+        firstPageFlag = true;
         if (count ==0 ) {
             if (validPriceRange) {
                 displayMap();
-            } else {
-                showInvalidSelection();
             }
         } else  displayStatistics();
         count++;
         count = count%2;
     }
 
-    private void showInvalidSelection() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Invalid Selection");
-        alert.setHeaderText(null);
-        alert.setContentText("Please choose a lower or equal price to the lower bound");
-        alert.showAndWait();
-    }
-    
     /**
      * For when the left button is pressed
      */
     @FXML
     private void goLeft(ActionEvent event) {
+        firstPageFlag = true;
         if (count == 0) {
             if (validPriceRange) {
                 displayMap();
             }
         } else displayStatistics();
-        count++;
-        count = count%2;
+        count--;
+        count = Math.abs(count%2);
     }
     
     /**
@@ -101,6 +95,10 @@ public class Controller implements Initializable{
         if (validPriceRange) {
             rightButton.setDisable(false);
             leftButton.setDisable(false);
+            if (firstPageFlag) {
+                if (count == 1) displayMap();
+                else displayStatistics();
+            }
         } else {
             rightButton.setDisable(true);
             leftButton.setDisable(true);
@@ -116,6 +114,10 @@ public class Controller implements Initializable{
         if (validPriceRange) {
             rightButton.setDisable(false);
             leftButton.setDisable(false);
+            if (firstPageFlag) {
+                if (count == 1) displayMap();
+                else displayStatistics();
+            }
         } else {
             rightButton.setDisable(true);
             leftButton.setDisable(true);

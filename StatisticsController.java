@@ -13,10 +13,12 @@ import java.util.Iterator;
 public class StatisticsController implements Initializable {
     private AirbnbDataLoader dataLoader;
     private ArrayList<AirbnbListing> propertyList;
+
     @FXML private Label statistic1;
     @FXML private Label statistic2;
     @FXML private Label statistic3;
     @FXML private Label statistic4;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dataLoader = new AirbnbDataLoader();
@@ -127,7 +129,6 @@ public class StatisticsController implements Initializable {
         return listings.size();
     }
 
-
     private void setStatAverageReviews(){
         statistic1.setText("The average number of reviews is: "+averageReviewCount(propertyList));
     }
@@ -143,4 +144,5 @@ public class StatisticsController implements Initializable {
     private void setStatMostExpensive(){
         statistic4.setText("The most expensive borough is: "+expensiveBorough(propertyList));
     }
+
 }
