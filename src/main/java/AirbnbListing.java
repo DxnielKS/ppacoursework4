@@ -1,8 +1,10 @@
+ 
+
 /**
  * Represents one listing of a property for rental on Airbnb.
  * This is essentially one row in the data table. Each column
  * has a corresponding field.
- */
+ */ 
 
 public class AirbnbListing {
     /**
@@ -145,7 +147,7 @@ public class AirbnbListing {
 
     @Override
     public String toString() {
-        return "src.main.java.AirbnbListing{" +
+        return "AirbnbListing{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", host_id='" + host_id + '\'' +
