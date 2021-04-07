@@ -24,63 +24,72 @@ public class StatisticsController implements Initializable {
         setStatNumberOfHouses();
         setStatMostExpensive();
     }
-/**
- * Most expensive borough
- */
-private int expensiveBorough(ArrayList<AirbnbListing> listings) {
-    //Filter for distinct boroughs
-    HashSet<String> distinctNeighbourhoods = new HashSet<>();
-    for (AirbnbListing listing : listings) {
-        distinctNeighbourhoods.add(listing.getNeighbourhood());
-    }
-    Object[] neighbourhoods = distinctNeighbourhoods.toArray();
-    for (Object neighbourhood : neighbourhoods) {
-        System.out.println(neighbourhood);
-    }
-    HashMap<String, Integer> distinctNeighbourhoodsMap = new HashMap<>();
-    for (int i = 0; i < distinctNeighbourhoods.size();i++) {
-        distinctNeighbourhoodsMap.put(((String) neighbourhoods[i]),0);
-    }
-    int tempCount = 0;
-    for (int i =0;i < listings.size(); i++) {
-        tempCount = distinctNeighbourhoodsMap.get(listings.get(i).getNeighbourhood());
-        tempCount++;
-        distinctNeighbourhoodsMap.put(listings.get(i).getNeighbourhood(),tempCount);
-    }
-    int max =0;
-    Iterator<String> it = distinctNeighbourhoods.iterator() ;
-    for (int i =0;i < distinctNeighbourhoodsMap.size();i++) {
-        String temp = "";
-        temp = it.next();
-        if (max < distinctNeighbourhoodsMap.get(temp) ) {
-            max = distinctNeighbourhoodsMap.get(temp);
+
+    /**
+     * Most expensive borough
+     */
+    private String expensiveBorough(ArrayList<AirbnbListing> listings) {
+        //Filter for distinct boroughs
+        HashSet<String> distinctNeighbourhoods = new HashSet<>();
+        for (AirbnbListing listing : listings) {
+            distinctNeighbourhoods.add(listing.getNeighbourhood());
         }
-    }
-    return max;
-}  
-/**
- * The number of entire home and apartments (as opposed to private rooms)
- * @return number of homes and apartments (no private rooms)
- */
-private int homesAndApartments(ArrayList<AirbnbListing> listings) {
-    int count = 0;
-    for (AirbnbListing listing : listings) {
-        if (!(listing.getRoom_type().equals("Private room"))) {
-            count++;
+        Object[] neighbourhoods = distinctNeighbourhoods.toArray();
+        for (Object neighbourhood : neighbourhoods) {
+            System.out.println(neighbourhood);
         }
+        HashMap<String, Integer> distinctNeighbourhoodsMap = new HashMap<>();
+        for (int i = 0; i < distinctNeighbourhoods.size();i++) {
+            distinctNeighbourhoodsMap.put(((String) neighbourhoods[i]),0);
+        }
+        int tempCount = 0;
+        for (AirbnbListing listing : listings) {
+            tempCount = distinctNeighbourhoodsMap.get(listing.getNeighbourhood());
+            tempCount++;
+            distinctNeighbourhoodsMap.put(listing.getNeighbourhood(), tempCount);
+        }
+        int max =0;
+        String returnString = "";
+        Iterator<String> it = distinctNeighbourhoods.iterator() ;
+        for (int i =0;i < distinctNeighbourhoodsMap.size();i++) {
+            String temp = "";
+            temp = it.next();
+
+            if (max < distinctNeighbourhoodsMap.get(temp) ) {
+                max = distinctNeighbourhoodsMap.get(temp);
+                returnString = temp;
+            }
+        }
+        return returnString;
+    }  
+
+    /**
+     * The number of entire home and apartments (as opposed to private rooms)
+     * @return number of homes and apartments (no private rooms)
+     */
+    private int homesAndApartments(ArrayList<AirbnbListing> listings) {
+        int count = 0;
+        for (AirbnbListing listing : listings) {
+            if (!(listing.getRoom_type().equals("Private room"))) {
+                count++;
+            }
+        }
+        return count;
     }
-    return count;
-}
+
     private void setStatAverageReviews(){
         statistic1.setText("This is a stats label");
     }
+
     private void setStatAvailableProperties(){
         statistic2.setText("This is a stats label");
     }
+
     private void setStatNumberOfHouses(){
-        statistic3.setText("This is a stats label");
+        statistic3.setText("The of Homes and Apartments is: " + homesAndApartments(propertyList));
     }
+
     private void setStatMostExpensive(){
-        statistic4.setText("The most expensive borough is"+expensiveBorough(propertyList));
+        statistic4.setText("The most expensive borough is: "+expensiveBorough(propertyList));
     }
 }
