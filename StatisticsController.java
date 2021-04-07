@@ -95,7 +95,7 @@ public class StatisticsController implements Initializable {
     }
 
     private void setStatNumberOfHouses(){
-        statistic3.setText("The of Homes and Apartments is: " + homesAndApartments(propertyList));
+        statistic3.setText("The number of Homes and Apartments is: " + homesAndApartments(propertyList));
     }
 
     private void setStatMostExpensive(){
