@@ -52,6 +52,8 @@ public class Controller implements Initializable{
         count = count%2;
     }
 
+
+
     
     /**
      * For when the left button is pressed

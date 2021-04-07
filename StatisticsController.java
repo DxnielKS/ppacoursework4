@@ -1,6 +1,8 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
+
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -20,10 +22,24 @@ public class StatisticsController implements Initializable {
         dataLoader = new AirbnbDataLoader();
         propertyList = new ArrayList<>();
         propertyList = dataLoader.load();
+        propertyList = filter(propertyList);
         setStatAverageReviews();
         setStatAvailableProperties();
         setStatNumberOfHouses();
         setStatMostExpensive();
+    }
+
+    /**
+     * Filter the listings
+     */
+    private ArrayList<AirbnbListing> filter(ArrayList<AirbnbListing> listings) {
+        ArrayList<AirbnbListing> filtered = new ArrayList<>();
+        for (AirbnbListing listing : listings) {
+            if (listing.getPrice() < Controller.max && listing.getPrice() > Controller.min) {
+                filtered.add(listing);
+            }
+        }
+        return filtered;
     }
 
     /**
@@ -88,15 +104,20 @@ public class StatisticsController implements Initializable {
     /**
      * average number of reviews for each property
      */
-    private double averageReviewCount(){
+    private double averageReviewCount(ArrayList<AirbnbListing> propertyList){
         int sum = 0;
         int numOfProperties = 0;
         for (AirbnbListing listing: propertyList){
             sum = sum+listing.getNumberOfReviews();
             numOfProperties++;
         }
-        return (sum/numOfProperties);
-        
+
+        //Whenever we are dividing by zero
+        try {
+            return (sum/numOfProperties);
+        } catch (ArithmeticException e) {
+            return 0;
+        }
     }
 
     /**
@@ -108,7 +129,7 @@ public class StatisticsController implements Initializable {
 
 
     private void setStatAverageReviews(){
-        statistic1.setText("The average number of reviews is: "+averageReviewCount());
+        statistic1.setText("The average number of reviews is: "+averageReviewCount(propertyList));
     }
 
     private void setStatAvailableProperties(){
