@@ -16,5 +16,8 @@
   </rowConstraints>
    <children>
       <Label fx:id="statistic1" text="Label" />
+      <Label fx:id="statistic2" text="Label" GridPane.columnIndex="1" />
+      <Label fx:id="statistic3" text="Label" GridPane.rowIndex="1" />
+      <Label fx:id="statistic4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

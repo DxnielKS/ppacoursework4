@@ -2,4 +2,10 @@
 comment0.target=StatisticsController
 comment1.params=url\ resourceBundle
 comment1.target=void\ initialize(java.net.URL,\ java.util.ResourceBundle)
-numComments=2
+comment2.params=listings
+comment2.target=int\ expensiveBorough(java.util.ArrayList)
+comment2.text=\r\n\ Most\ expensive\ borough\r\n
+comment3.params=listings
+comment3.target=int\ homesAndApartments(java.util.ArrayList)
+comment3.text=\r\n\ The\ number\ of\ entire\ home\ and\ apartments\ (as\ opposed\ to\ private\ rooms)\r\n\ @return\ number\ of\ homes\ and\ apartments\ (no\ private\ rooms)\r\n
+numComments=4
