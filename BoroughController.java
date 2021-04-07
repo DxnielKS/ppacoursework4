@@ -2,23 +2,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.apache.commons.lang3.ArrayUtils;
 
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class BoroughController implements Initializable {
@@ -134,12 +128,12 @@ public class BoroughController implements Initializable {
      * @param event
      */
     @FXML
-    private void hello(ActionEvent event) {
+    private void boroughClicked(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("buttonClick.fxml"));
             ScrollPane root = fxmlLoader.load();
-            ((ButtonClickController)fxmlLoader.getController()).display(neighbourhood,filterListings(neighbourhood,listings));
+            ((ButtonClickController)fxmlLoader.getController()).display(filterListings(neighbourhood,listings));
             Stage stage = new Stage();
             stage.setTitle(neighbourhood);
             stage.setScene(new Scene(root));
