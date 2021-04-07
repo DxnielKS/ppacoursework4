@@ -6,8 +6,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 
@@ -42,8 +45,10 @@ public class Controller implements Initializable{
     @FXML
     private void goLeft(ActionEvent event) {
         if (min < max) {
-            displayStatistics();
+
         }
+
+        displayStatistics();
     }
 
     /**
@@ -88,8 +93,22 @@ public class Controller implements Initializable{
             e.printStackTrace();
         }
     }
+
     private void displayStatistics()
     {
         titleLabel.setText("Displaying statistics!");
+
+        URL viewLocation = getClass().getResource("statisticspanel.fxml");
+        FXMLLoader statsLoader = new FXMLLoader(viewLocation);
+
+        try {
+            GridPane statsPane = statsLoader.load();
+            Stage stage = (Stage) minPrice.getScene().getWindow();
+            ((BorderPane) stage.getScene().getRoot()).setCenter(statsPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
