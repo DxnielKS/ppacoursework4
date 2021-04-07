@@ -23,7 +23,8 @@ public class Controller implements Initializable{
     private ChoiceBox<Integer> maxPrice;
     @FXML
     private Label titleLabel;
-    private int pageNumber;
+
+    private int count ;
     // min and max price
     public static int min;
     public static int max;
@@ -35,27 +36,28 @@ public class Controller implements Initializable{
      */
     @FXML
     private void goRight(ActionEvent event) {
-        if (min < max) {
-            displayMap();
-        } else {
-            showInvalidSelection();
-        }
+        if (count ==0 ) {
+            if (min < max) {
+                displayMap();
+            }
+        } else  displayStatistics();
+        count++;
+        count = count%2;
     }
-    
-    private void showInvalidSelection() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Invalid Selection");
-        alert.setHeaderText(null);
-        alert.setContentText("Please choose a lower or equal price to the lower bound");
-        alert.showAndWait();
-    }
+
     
     /**
      * For when the left button is pressed
      */
     @FXML
     private void goLeft(ActionEvent event) {
-        displayStatistics();
+        if (count == 0) {
+            if (min < max) {
+                displayMap();
+            }
+        } else displayStatistics();
+        count++;
+        count = count%2;
     }
     
     /**
@@ -63,7 +65,7 @@ public class Controller implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pageNumber = 1;
+        count = 0;
         minPrice.getItems().addAll(priceRange);
         maxPrice.getItems().addAll(priceRange);
         minPrice.setOnAction(this::minChoice);
