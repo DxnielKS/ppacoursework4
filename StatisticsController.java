@@ -66,7 +66,7 @@ public class StatisticsController implements Initializable {
     /**
      * Most expensive borough
      */
-    private String expensiveBorough(ArrayList<AirbnbListing> listings) {
+    public String expensiveBorough(ArrayList<AirbnbListing> listings) {
 
         //Filter for distinct boroughs
         HashSet<String> distinctNeighbourhoods = new HashSet<>();
@@ -110,7 +110,7 @@ public class StatisticsController implements Initializable {
      * The number of entire home and apartments (as opposed to private rooms)
      * @return number of homes and apartments (no private rooms)
      */
-    private String homesAndApartments(ArrayList<AirbnbListing> listings) {
+    public String homesAndApartments(ArrayList<AirbnbListing> listings) {
 
         //Find all those that are not a private room
         int count = 0;
@@ -125,7 +125,7 @@ public class StatisticsController implements Initializable {
     /**
      * average number of reviews for each property
      */
-    private String averageReviewCount(ArrayList<AirbnbListing> propertyList){
+    public String averageReviewCount(ArrayList<AirbnbListing> propertyList){
         int sum = 0;
         int numOfProperties = 0;
         for (AirbnbListing listing: propertyList){
@@ -144,7 +144,7 @@ public class StatisticsController implements Initializable {
     /**
      * number of available properties
      */
-    private String avalailableProperties(ArrayList<AirbnbListing> listings){
+    public String avalailableProperties(ArrayList<AirbnbListing> listings){
         return ("The number of available properties is: "+listings.size());
 
     }
@@ -153,7 +153,7 @@ public class StatisticsController implements Initializable {
      *
      * @return
      */
-    private String mostCommonRoomType(ArrayList<AirbnbListing> listings) {
+    public String mostCommonRoomType(ArrayList<AirbnbListing> listings) {
         int countPrivateRoom = 0;
         int countHouse = 0;
         for (int i =0; i < listings.size(); i++) {
@@ -231,7 +231,7 @@ public class StatisticsController implements Initializable {
             statistic1.setText(stats.get(count));
             count = prevCount;
 
-        } else if(x== 2){
+        } else if(x==2){
             //left2
 
             for (int i = 0;i < stats.size();i++) {
