@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.HashMap;
 import java.util.Iterator;
+
 public class StatisticsController implements Initializable {
     private AirbnbDataLoader dataLoader;
     private ArrayList<AirbnbListing> propertyList;
@@ -29,30 +30,34 @@ public class StatisticsController implements Initializable {
      * Most expensive borough
      */
     private String expensiveBorough(ArrayList<AirbnbListing> listings) {
+
         //Filter for distinct boroughs
         HashSet<String> distinctNeighbourhoods = new HashSet<>();
         for (AirbnbListing listing : listings) {
             distinctNeighbourhoods.add(listing.getNeighbourhood());
         }
+
+        //Make it into a hashmap so we can associate Name with number
         Object[] neighbourhoods = distinctNeighbourhoods.toArray();
-        for (Object neighbourhood : neighbourhoods) {
-            System.out.println(neighbourhood);
-        }
         HashMap<String, Integer> distinctNeighbourhoodsMap = new HashMap<>();
         for (int i = 0; i < distinctNeighbourhoods.size();i++) {
             distinctNeighbourhoodsMap.put(((String) neighbourhoods[i]),0);
         }
+
+        //Compute (price * minimum days) and add it to the entries
         int tempCount = 0;
         for (AirbnbListing listing : listings) {
             tempCount = distinctNeighbourhoodsMap.get(listing.getNeighbourhood());
-            tempCount++;
+            tempCount += listing.getPrice() * listing.getMinimumNights();
             distinctNeighbourhoodsMap.put(listing.getNeighbourhood(), tempCount);
         }
+
+        //Filter for the most expensive Entry
         int max =0;
         String returnString = "";
+        String temp = "";
         Iterator<String> it = distinctNeighbourhoods.iterator() ;
         for (int i =0;i < distinctNeighbourhoodsMap.size();i++) {
-            String temp = "";
             temp = it.next();
 
             if (max < distinctNeighbourhoodsMap.get(temp) ) {
@@ -60,6 +65,7 @@ public class StatisticsController implements Initializable {
                 returnString = temp;
             }
         }
+
         return returnString;
     }  
 
@@ -68,6 +74,8 @@ public class StatisticsController implements Initializable {
      * @return number of homes and apartments (no private rooms)
      */
     private int homesAndApartments(ArrayList<AirbnbListing> listings) {
+
+        //Find all those that are not a private room
         int count = 0;
         for (AirbnbListing listing : listings) {
             if (!(listing.getRoom_type().equals("Private room"))) {
@@ -76,6 +84,7 @@ public class StatisticsController implements Initializable {
         }
         return count;
     }
+<<<<<<< HEAD
     /**
      * average number of reviews for each property
      */
@@ -95,6 +104,10 @@ public class StatisticsController implements Initializable {
     private int avalailableProperties(){
         return 0;
     }
+=======
+
+    //Set Stats
+>>>>>>> 7ef96652fd6a57485a701e663089f9b15f0e78eb
     private void setStatAverageReviews(){
         statistic1.setText("The average number of reviews is: "+averageReviewCount());
     }
@@ -104,7 +117,7 @@ public class StatisticsController implements Initializable {
     }
 
     private void setStatNumberOfHouses(){
-        statistic3.setText("The of Homes and Apartments is: " + homesAndApartments(propertyList));
+        statistic3.setText("The number of Homes and Apartments is: " + homesAndApartments(propertyList));
     }
 
     private void setStatMostExpensive(){
