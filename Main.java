@@ -14,15 +14,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import java.net.URL;
-
 
 public class Main extends Application
 {
     FXMLLoader fxmlLoader;
-
     @Override
     public void start(Stage stage) throws Exception
     {
@@ -37,7 +34,4 @@ public class Main extends Application
         stage.show();
 
     }
-
-    
-
 }
