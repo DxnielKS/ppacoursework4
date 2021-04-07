@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -22,7 +23,8 @@ public class Controller implements Initializable{
     private ChoiceBox<Integer> maxPrice;
     @FXML
     private Label titleLabel;
-    private int pageNumber;
+
+    private int count;
     // min and max price
     public static int min;
     public static int max;
@@ -34,9 +36,12 @@ public class Controller implements Initializable{
      */
     @FXML
     private void goRight(ActionEvent event) {
-        if (min < max) {
+        System.out.println(count);
+        if (count == 0) {
             displayMap();
-        }
+        } else displayStatistics();
+        count++;
+        count = count %2;
     }
 
     /**
@@ -44,7 +49,13 @@ public class Controller implements Initializable{
      */
     @FXML
     private void goLeft(ActionEvent event) {
-        displayStatistics();
+        System.out.println(count);
+        if (count == 0) {
+            displayMap();
+        } else displayStatistics();
+        count++;
+        count = count%2;
+
     }
 
     /**
@@ -52,7 +63,6 @@ public class Controller implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pageNumber = 1;
         minPrice.getItems().addAll(priceRange);
         maxPrice.getItems().addAll(priceRange);
         minPrice.setOnAction(this::minChoice);
