@@ -63,7 +63,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#goLeft" prefHeight="25.0" prefWidth="45.0" text="Left" textAlignment="CENTER" GridPane.rowIndex="1" />
+                  <Button fx:id="leftButton" mnemonicParsing="false" onAction="#goLeft" prefHeight="25.0" prefWidth="45.0" text="Left" textAlignment="CENTER" GridPane.rowIndex="1" />
                </children>
                <BorderPane.margin>
                   <Insets />
@@ -85,7 +85,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#goRight" text="Right" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="rightButton" mnemonicParsing="false" onAction="#goRight" text="Right" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <BorderPane.margin>
                   <Insets right="90.0" />

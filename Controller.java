@@ -3,12 +3,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.GregorianCalendar;
@@ -24,6 +24,13 @@ public class Controller implements Initializable{
     @FXML
     private Label titleLabel;
 
+    @FXML
+    private Button rightButton;
+    @FXML
+    private Button leftButton;
+
+    private boolean validPriceRange;
+
     private int count ;
     // min and max price
     public static int min;
@@ -37,7 +44,7 @@ public class Controller implements Initializable{
     @FXML
     private void goRight(ActionEvent event) {
         if (count ==0 ) {
-            if (min < max) {
+            if (validPriceRange) {
                 displayMap();
             }
         } else  displayStatistics();
@@ -52,7 +59,7 @@ public class Controller implements Initializable{
     @FXML
     private void goLeft(ActionEvent event) {
         if (count == 0) {
-            if (min < max) {
+            if (validPriceRange) {
                 displayMap();
             }
         } else displayStatistics();
@@ -66,6 +73,9 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         count = 0;
+        validPriceRange = false;
+        rightButton.setDisable(true);
+        leftButton.setDisable(true);
         minPrice.getItems().addAll(priceRange);
         maxPrice.getItems().addAll(priceRange);
         minPrice.setOnAction(this::minChoice);
@@ -78,6 +88,14 @@ public class Controller implements Initializable{
      */
     private void minChoice(ActionEvent event) {
         min = minPrice.getSelectionModel().getSelectedItem();
+        validPriceRange = min < max;
+        if (validPriceRange) {
+            rightButton.setDisable(false);
+            leftButton.setDisable(false);
+        } else {
+            rightButton.setDisable(true);
+            leftButton.setDisable(true);
+        }
     }
 
     /**
@@ -85,6 +103,14 @@ public class Controller implements Initializable{
      */
     private void maxChoice(ActionEvent event) {
         max = maxPrice.getSelectionModel().getSelectedItem();
+        validPriceRange = min < max;
+        if (validPriceRange) {
+            rightButton.setDisable(false);
+            leftButton.setDisable(false);
+        } else {
+            rightButton.setDisable(true);
+            leftButton.setDisable(true);
+        }
     }
 
     /**
