@@ -11,6 +11,6 @@ public class StatisticsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+        statistic1.setText("This is a stats label");
     }
 }

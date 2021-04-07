@@ -15,6 +15,6 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Label" />
+      <Label fx:id="statistic1" text="Label" />
    </children>
 </GridPane>
