@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 import java.net.URISyntaxException;
 
 public class AirbnbDataLoader {
@@ -14,13 +16,18 @@ public class AirbnbDataLoader {
     
     public ArrayList<AirbnbListing> load() {
         System.out.print("Begin loading Airbnb london dataset...");
-        ArrayList<AirbnbListing> listings = new ArrayList<AirbnbListing>();
+        ArrayList<AirbnbListing> listings = new ArrayList<>();
         try{
-            URL url = getClass().getResource("/img/airbnb-london.csv");
+            URL url = getClass().getResource("/csv/airbnb-london.csv");
             CSVReader reader = new CSVReader(new FileReader(new File(url.toURI()).getAbsolutePath()));
             String [] line;
             //skip the first row (column headers)
-            reader.readNext();
+            try {
+                reader.readNext();
+            } catch (CsvValidationException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             while ((line = reader.readNext()) != null) {
                 String id = line[0];
                 String name = line[1];
@@ -45,7 +52,7 @@ public class AirbnbDataLoader {
                     );
                 listings.add(listing);
             }
-        } catch(IOException | URISyntaxException e){
+        } catch(IOException | URISyntaxException | CsvValidationException e){
             System.out.println("Failure! Something went wrong");
             e.printStackTrace();
         }

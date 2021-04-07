@@ -1,27 +1,13 @@
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -33,15 +19,15 @@ public class Controller implements Initializable{
     private ChoiceBox<Integer> maxPrice;
     @FXML
     private Label titleLabel;
+
     // min and max price
     public static int min;
     public static int max;
-    //values for price range (possibly add/remove some)
+    //values for price range
     private final Integer[] priceRange = {0,20, 40,60,80,100,200,300,400,500,600,1000,1500,2000,2500,3000,5000,10000};
 
     /**
      * For when the right button is pressed
-     * @param event
      */
     @FXML
     private void goRight(ActionEvent event) {
@@ -52,7 +38,6 @@ public class Controller implements Initializable{
 
     /**
      * For when the left button is pressed
-     * @param event
      */
     @FXML
     private void goLeft(ActionEvent event) {
@@ -63,8 +48,6 @@ public class Controller implements Initializable{
 
     /**
      * Populate the pricerange choice boxes and their actions
-     * @param url
-     * @param resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,7 +60,6 @@ public class Controller implements Initializable{
 
     /**
      * updates min with the choice and if min < max then display the "map"
-     * @param event
      */
     private void minChoice(ActionEvent event) {
         min = minPrice.getSelectionModel().getSelectedItem();
@@ -85,7 +67,6 @@ public class Controller implements Initializable{
 
     /**
      * update max with the choice and if min < max then display the "map"
-     * @param event
      */
     private void maxChoice(ActionEvent event) {
         max = maxPrice.getSelectionModel().getSelectedItem();
@@ -96,7 +77,7 @@ public class Controller implements Initializable{
      */
     private void display() {
         titleLabel.setText("Now click a borough");
-        URL viewLocation = getClass().getResource("borough.fxml");
+        URL viewLocation = getClass().getResource("/fxml/borough.fxml");
         FXMLLoader boroughLoader = new FXMLLoader(viewLocation);
         try {
             StackPane boroughPane = boroughLoader.load();
@@ -106,6 +87,4 @@ public class Controller implements Initializable{
             e.printStackTrace();
         }
     }
-
-
 }

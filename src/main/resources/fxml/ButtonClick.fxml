@@ -16,8 +16,8 @@
                     <columns>
                       <TableColumn fx:id="hostNameCollumn" prefWidth="97.0" text="Name of Host" />
                       <TableColumn fx:id="priceCollumn" prefWidth="53.0" text="Price" />
-                        <TableColumn fx:id="numberOfReviewsCollumn" prefWidth="130.0" text="Number of Reviews" />
-                        <TableColumn fx:id="minnumberOfNights" prefWidth="75.0" text="Min Nights" />
+                        <TableColumn fx:id="numberOfReviewsColumn" prefWidth="130.0" text="Number of Reviews" />
+                        <TableColumn fx:id="numberOfNights" prefWidth="75.0" text="Min Nights" />
                     </columns>
                   </TableView>
                </center>

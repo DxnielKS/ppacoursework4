@@ -2,23 +2,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.apache.commons.lang3.ArrayUtils;
 
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class BoroughController implements Initializable {
@@ -30,7 +24,7 @@ public class BoroughController implements Initializable {
     private Label EnfieldLabel, WalthamLabel, WestminsterLabel, HillingdonLabel, HaveringLabel, WandsworthLabel,LewishamLabel, TowerLabel, HounslowLabel, RedbridgeLabel, SouthwarkLabel, CamdenLabel, BromleyLabel, LambethLabel, KensingtonLabel, IslingtonLabel, BarnetLabel, RichmondLabel, KingstonLabel, HarrowLabel, SuttonLabel, HaringeyLabel, BrentLabel, BexleyLabel, HackneyLabel, GreenwichLabel, HammersmithLabel, MertonLabel, CroydonLabel, NewhamLabel, EalingLabel,CityLabel, BarkingLabel;
     //Fields
     private ArrayList<AirbnbListing> listings = new ArrayList<>();
-    private ArrayList<String> distinctneighbourhoods;
+    private ArrayList<String> distinctNeighbourhoods;
     private ArrayList<Label> labels;
 
     /**
@@ -42,7 +36,7 @@ public class BoroughController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AirbnbDataLoader airbnbDataLoader = new AirbnbDataLoader();
         listings = airbnbDataLoader.load();
-        distinctneighbourhoods = new ArrayList<String>(getdistinctBorough(listings));
+        distinctNeighbourhoods = new ArrayList<String>(getDistinctBorough(listings));
         labels = new ArrayList<Label>();
         addLabels();
         showLabel();
@@ -94,16 +88,16 @@ public class BoroughController implements Initializable {
      */
     private void showLabel() {
         int count = 0;
-        for (int y = 0;y<distinctneighbourhoods.size();y++) {
-            for (int i = 0;i<listings.size();i++) {
-                if (distinctneighbourhoods.get(y).equals(listings.get(i).getNeighbourhood())) {
-                    if (listings.get(i).getPrice() <= Controller.max && listings.get(i).getPrice() >= Controller.min)
+        for (int y = 0; y< distinctNeighbourhoods.size(); y++) {
+            for (AirbnbListing listing : listings) {
+                if (distinctNeighbourhoods.get(y).equals(listing.getNeighbourhood())) {
+                    if (listing.getPrice() <= Controller.max && listing.getPrice() >= Controller.min)
                         count++;
-                    }
                 }
-            for (int x = 0; x < distinctneighbourhoods.size();x++) {
+            }
+            for (int x = 0; x < distinctNeighbourhoods.size(); x++) {
 
-                if (labels.get(x).getText().equals(distinctneighbourhoods.get(y))) {
+                if (labels.get(x).getText().equals(distinctNeighbourhoods.get(y))) {
                     labels.get(x).setText("" + count);
                 }
             }
@@ -134,12 +128,12 @@ public class BoroughController implements Initializable {
      * @param event
      */
     @FXML
-    private void hello(ActionEvent event) {
+    private void boroughClicked(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("buttonClick.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/buttonClick.fxml"));
             ScrollPane root = fxmlLoader.load();
-            ((ButtonClickController)fxmlLoader.getController()).display(neighbourhood,filterListings(neighbourhood,listings));
+            ((ButtonClickController)fxmlLoader.getController()).display(filterListings(neighbourhood,listings));
             Stage stage = new Stage();
             stage.setTitle(neighbourhood);
             stage.setScene(new Scene(root));
@@ -155,7 +149,7 @@ public class BoroughController implements Initializable {
      * @param listings
      * @return
      */
-    private HashSet<String> getdistinctBorough(ArrayList<AirbnbListing> listings) {
+    private HashSet<String> getDistinctBorough(ArrayList<AirbnbListing> listings) {
         HashSet<String> distinctNeighbourhoods = new HashSet<>();
         for (AirbnbListing listing : listings) {
             distinctNeighbourhoods.add(listing.getNeighbourhood());
