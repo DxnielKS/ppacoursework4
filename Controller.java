@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
@@ -36,9 +37,19 @@ public class Controller implements Initializable{
     private void goRight(ActionEvent event) {
         if (min < max) {
             displayMap();
+        } else {
+            showInvalidSelection();
         }
     }
-
+    
+    private void showInvalidSelection() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Selection");
+        alert.setHeaderText(null);
+        alert.setContentText("Please choose a lower or equal price to the lower bound");
+        alert.showAndWait();
+    }
+    
     /**
      * For when the left button is pressed
      */
