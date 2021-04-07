@@ -30,7 +30,7 @@ public class Main extends Application
         Scene scene = new Scene(root, 1300, 860);
         stage.setTitle("PROJECT");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
 
     }

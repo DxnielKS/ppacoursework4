@@ -79,7 +79,6 @@ public class ButtonClickController implements Initializable {
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-
     }
 
 
