@@ -1,4 +1,3 @@
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +38,10 @@ public class ButtonClickController implements Initializable {
 
     /**
      * Gives the table access to the (filtered) data
-     *
      */
     public void display(ArrayList<AirbnbListing> listings) {
         tableView.setItems(FXCollections.observableArrayList(listings));
     }
-
 
     /**
      * When an entry in the table is clicked, display extra information.
@@ -63,6 +60,4 @@ public class ButtonClickController implements Initializable {
             exception.printStackTrace();
         }
     }
-
-
 }

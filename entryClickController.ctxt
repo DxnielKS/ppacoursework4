@@ -7,5 +7,5 @@ comment2.target=void\ setAirbnbListingToDisplay(AirbnbListing)
 comment2.text=\r\n\ Get\ the\ listing\ here\r\n
 comment3.params=
 comment3.target=void\ display()
-comment3.text=\r\n\ Display\ the\ description\r\n
+comment3.text=\r\n\ Display\ the\ text\r\n
 numComments=4

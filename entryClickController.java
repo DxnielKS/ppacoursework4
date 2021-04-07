@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 public class entryClickController implements Initializable {
 
-
+    //FXML Fields
     @FXML private Label nameLabel;
 
     @FXML private Label coordinateLabel;
@@ -44,5 +44,6 @@ public class entryClickController implements Initializable {
         hostNameLabel.setText("Host Name: " + airbnbListingToDisplay.getHost_name());
         reviewsPerMonthLabel.setText("Reviews per Month: " + airbnbListingToDisplay.getReviewsPerMonth());
         hostListingscountLabel.setText("Number of listings " + airbnbListingToDisplay.getHost_name() + " has: " + airbnbListingToDisplay.getCalculatedHostListingsCount() );
+
     }
 }

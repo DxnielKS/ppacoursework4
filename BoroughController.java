@@ -128,7 +128,7 @@ public class BoroughController implements Initializable {
      * @param event
      */
     @FXML
-    private void hello(ActionEvent event) {
+    private void boroughClicked(ActionEvent event) {
         String neighbourhood = ((Button)event.getSource()).getText();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("buttonClick.fxml"));

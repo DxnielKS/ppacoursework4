@@ -5,16 +5,13 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.net.URL;
 
-
 public class Main extends Application
 {
-    FXMLLoader fxmlLoader;
-
     @Override
     public void start(Stage stage) throws Exception
     {
         URL viewLocation = getClass().getResource("main.fxml");
-        fxmlLoader = new FXMLLoader(viewLocation);
+        FXMLLoader fxmlLoader = new FXMLLoader(viewLocation);
         BorderPane root = fxmlLoader.load();
 
         Scene scene = new Scene(root, 1300, 860);
@@ -22,7 +19,4 @@ public class Main extends Application
         stage.setScene(scene);
         stage.show();
     }
-
-    
-
 }

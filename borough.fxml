@@ -18,21 +18,21 @@
          <children>
             <AnchorPane layoutY="-1.0" prefHeight="616.0" prefWidth="906.0">
                <children>
-                  <Button fx:id="Lambeth" layoutX="399.0" layoutY="492.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Lambeth" />
-                  <Button fx:id="Croydon" layoutX="441.0" layoutY="565.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Croydon" />
-                  <Button fx:id="Bromley" layoutX="529.0" layoutY="565.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Bromley" />
-                  <Button fx:id="Kingston" layoutX="273.0" layoutY="565.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="61.0" text="Kingston upon Thames" />
-                  <Button fx:id="Richmond" layoutX="222.0" layoutY="493.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="72.0" text="Richmond upon Thames" textOverrun="CLIP" />
-                  <Button fx:id="Merton" layoutX="311.0" layoutY="493.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Merton" />
-                  <Button fx:id="Sutton" layoutX="357.0" layoutY="565.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="61.0" text="Sutton" />
-                  <Button fx:id="Lewisham" layoutX="575.0" layoutY="492.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Lewisham" />
-                  <Button fx:id="Hammersmith" layoutX="262.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="84.0" text="Hammersmith and Fulham" textOverrun="CLIP" />
-                  <Button fx:id="Hounslow" layoutX="171.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="76.0" text="Hounslow" />
-                  <Button fx:id="Wandsworth" layoutX="351.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" text="Wandsworth" />
-                  <Button fx:id="Southwark" layoutX="486.0" layoutY="492.0" mnemonicParsing="false" onAction="#hello" text="Southwark" />
-                  <Button fx:id="Waltham" layoutX="487.0" layoutY="183.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Waltham Forest" textOverrun="CLIP" />
+                  <Button fx:id="Lambeth" layoutX="399.0" layoutY="492.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Lambeth" />
+                  <Button fx:id="Croydon" layoutX="441.0" layoutY="565.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Croydon" />
+                  <Button fx:id="Bromley" layoutX="529.0" layoutY="565.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Bromley" />
+                  <Button fx:id="Kingston" layoutX="273.0" layoutY="565.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="61.0" text="Kingston upon Thames" />
+                  <Button fx:id="Richmond" layoutX="222.0" layoutY="493.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="72.0" text="Richmond upon Thames" textOverrun="CLIP" />
+                  <Button fx:id="Merton" layoutX="311.0" layoutY="493.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Merton" />
+                  <Button fx:id="Sutton" layoutX="357.0" layoutY="565.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="61.0" text="Sutton" />
+                  <Button fx:id="Lewisham" layoutX="575.0" layoutY="492.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Lewisham" />
+                  <Button fx:id="Hammersmith" layoutX="262.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="84.0" text="Hammersmith and Fulham" textOverrun="CLIP" />
+                  <Button fx:id="Hounslow" layoutX="171.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="76.0" text="Hounslow" />
+                  <Button fx:id="Wandsworth" layoutX="351.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" text="Wandsworth" />
+                  <Button fx:id="Southwark" layoutX="486.0" layoutY="492.0" mnemonicParsing="false" onAction="#boroughClicked" text="Southwark" />
+                  <Button fx:id="Waltham" layoutX="487.0" layoutY="183.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Waltham Forest" textOverrun="CLIP" />
                   <Label fx:id="WalthamLabel" layoutX="496.0" layoutY="214.0" text="Waltham Forest" />
-                  <Button fx:id="Enfield" layoutX="449.0" layoutY="110.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="54.0" text="Enfield" />
+                  <Button fx:id="Enfield" layoutX="449.0" layoutY="110.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="54.0" text="Enfield" />
                   <Label fx:id="EnfieldLabel" layoutX="458.0" layoutY="136.0" text="Enfield" />
                   <Label fx:id="WestminsterLabel" layoutX="416.0" layoutY="370.0" text="Westminster" />
                   <Label fx:id="HillingdonLabel" layoutX="143.0" layoutY="362.0" text="Hillingdon" />
@@ -65,25 +65,25 @@
                   <Label fx:id="KingstonLabel" layoutX="285.0" layoutY="598.0" text="Kingston upon Thames" />
                   <Label fx:id="SuttonLabel" layoutX="381.0" layoutY="598.0" text="Sutton" />
                   <Label fx:id="CroydonLabel" layoutX="460.0" layoutY="589.0" text="Croydon" />
-                  <Button fx:id="Barking" layoutX="658.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="61.0" text="Barking and Dagenham" textOverrun="CLIP" />
-                  <Button fx:id="City" layoutX="455.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="39.0" text="City of London" textOverrun="CLIP" />
-                  <Button fx:id="Greenwich" layoutX="528.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" text="Greenwich" />
-                  <Button fx:id="Barnet" layoutX="315.0" layoutY="183.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="61.0" text="Barnet" />
-                  <Button fx:id="Haringey" layoutX="399.0" layoutY="183.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Haringey" textOverrun="CLIP" />
-                  <Button fx:id="Bexley" layoutX="618.0" layoutY="411.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="70.0" text="Bexley" />
-                  <Button fx:id="Newham" layoutX="572.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="76.0" text="Newham" />
-                  <Button fx:id="Tower" layoutX="478.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="80.0" text="Tower Hamlets" />
-                  <Button fx:id="Westminster" layoutX="393.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" text="Westminster" />
-                  <Button fx:id="Havering" layoutX="704.0" layoutY="260.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="72.0" text="Havering" />
-                  <Button fx:id="Harrow" layoutX="181.0" layoutY="260.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="67.0" text="Harrow" />
-                  <Button fx:id="Redbridge" layoutX="611.0" layoutY="260.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="78.0" text="Redbridge" />
-                  <Button fx:id="Hackney" layoutX="533.0" layoutY="265.0" mnemonicParsing="false" onAction="#hello" text="Hackney" />
-                  <Button fx:id="Islington" layoutX="444.0" layoutY="260.0" mnemonicParsing="false" onAction="#hello" text="Islington" />
-                  <Button fx:id="Camden" layoutX="355.0" layoutY="265.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="67.0" text="Camden" />
-                  <Button fx:id="Brent" layoutX="272.0" layoutY="260.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="56.0" text="Brent" />
-                  <Button fx:id="Hillingdon" layoutX="133.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="76.0" text="Hillingdon" />
-                  <Button fx:id="Ealing" layoutX="234.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" text="Ealing" />
-                  <Button fx:id="Kensington" layoutX="304.0" layoutY="338.0" mnemonicParsing="false" onAction="#hello" prefHeight="25.0" prefWidth="84.0" text="Kensington and Chelsea" textOverrun="CLIP" />
+                  <Button fx:id="Barking" layoutX="658.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="61.0" text="Barking and Dagenham" textOverrun="CLIP" />
+                  <Button fx:id="City" layoutX="455.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="39.0" text="City of London" textOverrun="CLIP" />
+                  <Button fx:id="Greenwich" layoutX="528.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" text="Greenwich" />
+                  <Button fx:id="Barnet" layoutX="315.0" layoutY="183.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="61.0" text="Barnet" />
+                  <Button fx:id="Haringey" layoutX="399.0" layoutY="183.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Haringey" textOverrun="CLIP" />
+                  <Button fx:id="Bexley" layoutX="618.0" layoutY="411.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="70.0" text="Bexley" />
+                  <Button fx:id="Newham" layoutX="572.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="76.0" text="Newham" />
+                  <Button fx:id="Tower" layoutX="478.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="80.0" text="Tower Hamlets" />
+                  <Button fx:id="Westminster" layoutX="393.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" text="Westminster" />
+                  <Button fx:id="Havering" layoutX="704.0" layoutY="260.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="72.0" text="Havering" />
+                  <Button fx:id="Harrow" layoutX="181.0" layoutY="260.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="67.0" text="Harrow" />
+                  <Button fx:id="Redbridge" layoutX="611.0" layoutY="260.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="78.0" text="Redbridge" />
+                  <Button fx:id="Hackney" layoutX="533.0" layoutY="265.0" mnemonicParsing="false" onAction="#boroughClicked" text="Hackney" />
+                  <Button fx:id="Islington" layoutX="444.0" layoutY="260.0" mnemonicParsing="false" onAction="#boroughClicked" text="Islington" />
+                  <Button fx:id="Camden" layoutX="355.0" layoutY="265.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="67.0" text="Camden" />
+                  <Button fx:id="Brent" layoutX="272.0" layoutY="260.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="56.0" text="Brent" />
+                  <Button fx:id="Hillingdon" layoutX="133.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="76.0" text="Hillingdon" />
+                  <Button fx:id="Ealing" layoutX="234.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" text="Ealing" />
+                  <Button fx:id="Kensington" layoutX="304.0" layoutY="338.0" mnemonicParsing="false" onAction="#boroughClicked" prefHeight="25.0" prefWidth="84.0" text="Kensington and Chelsea" textOverrun="CLIP" />
                </children>
             </AnchorPane>
          </children>
