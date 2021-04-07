@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StatisticsController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,28 +19,28 @@
    <children>
       <AnchorPane GridPane.rowIndex="1">
          <children>
-            <Label fx:id="statistic3" layoutX="132.0" layoutY="87.0" prefHeight="26.0" prefWidth="37.0" text="Label" />
+            <Label fx:id="statistic3" alignment="CENTER" layoutX="6.0" layoutY="3.0" prefHeight="110.0" prefWidth="284.0" text="Label" />
             <Button layoutX="14.0" layoutY="161.0" mnemonicParsing="false" text="Left" />
             <Button layoutX="231.0" layoutY="162.0" mnemonicParsing="false" text="Right" />
          </children>
       </AnchorPane>
       <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="statistic4" layoutX="135.0" layoutY="92.0" text="Label" />
+            <Label fx:id="statistic4" alignment="CENTER" layoutX="7.0" layoutY="6.0" prefHeight="103.0" prefWidth="284.0" text="Label" />
             <Button layoutX="14.0" layoutY="161.0" mnemonicParsing="false" text="Left" />
             <Button layoutX="231.0" layoutY="162.0" mnemonicParsing="false" text="Right" />
          </children>
       </AnchorPane>
       <AnchorPane GridPane.columnIndex="1">
          <children>
-            <Label fx:id="statistic2" layoutX="135.0" layoutY="92.0" text="Label" />
+            <Label fx:id="statistic2" alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="103.0" prefWidth="284.0" text="Label" />
             <Button layoutX="14.0" layoutY="161.0" mnemonicParsing="false" text="Left" />
             <Button layoutX="231.0" layoutY="162.0" mnemonicParsing="false" text="Right" />
          </children>
       </AnchorPane>
       <AnchorPane>
          <children>
-            <Label fx:id="statistic1" layoutX="132.0" layoutY="87.0" prefHeight="26.0" prefWidth="37.0" text="Label" />
+            <Label fx:id="statistic1" alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="103.0" prefWidth="284.0" text="Label" />
             <Button layoutX="14.0" layoutY="160.0" mnemonicParsing="false" text="Left" />
             <Button layoutX="231.0" layoutY="161.0" mnemonicParsing="false" text="Right" />
          </children>
