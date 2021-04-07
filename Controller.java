@@ -44,10 +44,6 @@ public class Controller implements Initializable{
      */
     @FXML
     private void goLeft(ActionEvent event) {
-        if (min < max) {
-
-        }
-
         displayStatistics();
     }
 

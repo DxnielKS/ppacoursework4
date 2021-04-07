@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -15,6 +16,25 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label fx:id="statistic1" text="Label" />
+      <AnchorPane>
+         <children>
+            <Label fx:id="statistic1" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="statistic3" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="statistic2" text="Label" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="stat" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="statistic4" text="Label" />
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>
