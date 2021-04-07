@@ -46,14 +46,21 @@ public class Controller implements Initializable{
         if (count ==0 ) {
             if (validPriceRange) {
                 displayMap();
+            } else {
+                showInvalidSelection();
             }
         } else  displayStatistics();
         count++;
         count = count%2;
     }
 
-
-
+    private void showInvalidSelection() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Selection");
+        alert.setHeaderText(null);
+        alert.setContentText("Please choose a lower or equal price to the lower bound");
+        alert.showAndWait();
+    }
     
     /**
      * For when the left button is pressed
