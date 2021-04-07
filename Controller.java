@@ -97,7 +97,6 @@ public class Controller implements Initializable{
     private void displayStatistics()
     {
         titleLabel.setText("Displaying statistics!");
-
         URL viewLocation = getClass().getResource("statisticspanel.fxml");
         FXMLLoader statsLoader = new FXMLLoader(viewLocation);
 
