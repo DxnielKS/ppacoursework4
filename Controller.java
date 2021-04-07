@@ -57,7 +57,7 @@ public class Controller implements Initializable{
     private void goLeft(ActionEvent event) {
         displayStatistics();
     }
-
+    
     /**
      * Populate the pricerange choice boxes and their actions
      */
