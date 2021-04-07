@@ -57,7 +57,7 @@ public class Controller implements Initializable{
         count = count%2;
 
     }
-
+    
     /**
      * Populate the pricerange choice boxes and their actions
      */
