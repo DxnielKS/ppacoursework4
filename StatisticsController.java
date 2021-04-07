@@ -76,9 +76,27 @@ public class StatisticsController implements Initializable {
         }
         return count;
     }
-
+    /**
+     * average number of reviews for each property
+     */
+    private double averageReviewCount(){
+        int sum = 0;
+        int numOfProperties = 0;
+        for (AirbnbListing listing: propertyList){
+            sum = sum+listing.getNumberOfReviews();
+            numOfProperties++;
+        }
+        return (sum/numOfProperties);
+        
+    }
+    /**
+     * number of available properties
+     */
+    private int avalailableProperties(){
+        return 0;
+    }
     private void setStatAverageReviews(){
-        statistic1.setText("This is a stats label");
+        statistic1.setText("The average number of reviews is: "+averageReviewCount());
     }
 
     private void setStatAvailableProperties(){
