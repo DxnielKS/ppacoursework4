@@ -75,7 +75,17 @@ public class StatisticsControllerTest
         java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
         assertEquals("The number of houses or apartments is 27885", statisti1.homesAndApartments(arrayLis1));
     }
+
+    @Test
+    public void cheapestBorough()
+    {
+        AirbnbDataLoader airbnbDa1 = new AirbnbDataLoader();
+        StatisticsController statisti2 = new StatisticsController();
+        java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
+        assertEquals("The cheapest borough is: Havering", statisti2.cheapestBorough(arrayLis1));
+    }
 }
+
 
 
 

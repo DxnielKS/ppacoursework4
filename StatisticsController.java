@@ -45,6 +45,8 @@ public class StatisticsController implements Initializable {
         stats.add(homesAndApartments(propertyList));
         stats.add(expensiveBorough(propertyList));
         stats.add(mostCommonRoomType(propertyList));
+        stats.add(averagePrice(propertyList));
+        stats.add(averageHostListings(propertyList));
 
         count = 4;
 
@@ -62,10 +64,66 @@ public class StatisticsController implements Initializable {
         }
         return filtered;
     }
-
     /**
-     * Most expensive borough
+     * Average price
      */
+    public String averagePrice(ArrayList<AirbnbListing> listings) {
+        int count = 0;
+        for (int i =0;i<listings.size();i++) {
+            count += listings.get(i).getPrice() * listings.get(i).getMinimumNights();
+        }
+        return "The average property price is: " + (count/listings.size());
+    }
+    /**
+ * Average number of min nights
+ */
+public String averageMinNights(ArrayList<AirbnbListing> listings) {
+    int count = 0;
+    for (AirbnbListing listing : listings) {
+        count += listing.getMinimumNights();
+    }
+    return "The average minimum nights is: " + (count/listings.size());
+}
+    /**
+     * Least expensive borough
+     */
+    public String cheapestBorough(ArrayList<AirbnbListing> listings) {
+            //Filter for distinct boroughs
+        HashSet<String> distinctNeighbourhoods = new HashSet<>();
+        for (AirbnbListing listing : listings) {
+            distinctNeighbourhoods.add(listing.getNeighbourhood());
+        }
+
+        //Make it into a hashmap so we can associate Name with number
+        Object[] neighbourhoods = distinctNeighbourhoods.toArray();
+        HashMap<String, Integer> distinctNeighbourhoodsMap = new HashMap<>();
+        for (int i = 0; i < distinctNeighbourhoods.size();i++) {
+            distinctNeighbourhoodsMap.put(((String) neighbourhoods[i]),0);
+        }
+
+        //Compute (price * minimum days) and add it to the entries
+        int tempCount = 0;
+        for (AirbnbListing listing : listings) {
+            tempCount = distinctNeighbourhoodsMap.get(listing.getNeighbourhood());
+            tempCount += listing.getPrice() * listing.getMinimumNights();
+            distinctNeighbourhoodsMap.put(listing.getNeighbourhood(), tempCount);
+        }
+
+        //Filter for the most expensive Entry
+        int min =100000000;
+        String returnString = "";
+        String temp = "";
+        Iterator<String> it = distinctNeighbourhoods.iterator() ;
+        for (int i =0;i < distinctNeighbourhoodsMap.size();i++) {
+            temp = it.next();
+
+            if (min > distinctNeighbourhoodsMap.get(temp) ) {
+                min = distinctNeighbourhoodsMap.get(temp);
+                returnString = temp;
+            }
+    }
+    return ("The cheapest borough is: "+returnString);
+}
     public String expensiveBorough(ArrayList<AirbnbListing> listings) {
 
         //Filter for distinct boroughs
@@ -140,13 +198,21 @@ public class StatisticsController implements Initializable {
             return "0";
         }
     }
-
+    /**
+ * Average number of listings a host has
+ */
+public String averageHostListings(ArrayList<AirbnbListing> listings) {
+    int count = 0;
+    for (int i =0;i < listings.size();i++) {
+        count += listings.get(i).getCalculatedHostListingsCount();
+    }
+    return "The average number of listings each host has: " + (count/listings.size());
+}
     /**
      * number of available properties
      */
     public String avalailableProperties(ArrayList<AirbnbListing> listings){
         return ("The number of available properties is: "+listings.size());
-
     }
 
     /**
@@ -175,7 +241,7 @@ public class StatisticsController implements Initializable {
         double x= ((Button)event.getSource()).getTranslateZ();
         int prevCount = 0;
         if (x == 1) {
-            //righ1
+            //right1
             for (int i = 0;i < stats.size();i++) {
                 if (stats.get(i).equals(statistic1.getText())) {
                     prevCount = i;
@@ -202,7 +268,7 @@ public class StatisticsController implements Initializable {
             statistic3.setText(stats.get(count));
             count = prevCount;
         }else if (x == 4) {
-            //rigt4
+            //right4
             for (int i = 0;i < stats.size();i++) {
                 if (stats.get(i).equals(statistic4.getText())) {
                     prevCount = i;
