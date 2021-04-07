@@ -19,7 +19,7 @@ public class Controller implements Initializable{
     private ChoiceBox<Integer> maxPrice;
     @FXML
     private Label titleLabel;
-
+    private int pageNumber;
     // min and max price
     public static int min;
     public static int max;
@@ -32,7 +32,7 @@ public class Controller implements Initializable{
     @FXML
     private void goRight(ActionEvent event) {
         if (min < max) {
-            display();
+            displayMap();
         }
     }
 
@@ -42,7 +42,7 @@ public class Controller implements Initializable{
     @FXML
     private void goLeft(ActionEvent event) {
         if (min < max) {
-            display();
+            displayStatistics();
         }
     }
 
@@ -51,6 +51,7 @@ public class Controller implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        pageNumber = 1;
         minPrice.getItems().addAll(priceRange);
         maxPrice.getItems().addAll(priceRange);
         minPrice.setOnAction(this::minChoice);
@@ -75,7 +76,7 @@ public class Controller implements Initializable{
     /**
      * display the "map" BoroughController.java is the controller class
      */
-    private void display() {
+    private void displayMap() {
         titleLabel.setText("Now click a borough");
         URL viewLocation = getClass().getResource("borough.fxml");
         FXMLLoader boroughLoader = new FXMLLoader(viewLocation);
@@ -86,5 +87,9 @@ public class Controller implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void displayStatistics()
+    {
+        titleLabel.setText("Displaying statistics!");
     }
 }

@@ -143,7 +143,6 @@ public class BoroughController implements Initializable {
             e.printStackTrace();
         }
     }
-
     /**
      * Uses a hashset to get all the distinct boroughs in the data
      * @param listings
