@@ -105,7 +105,14 @@ public class StatisticsController implements Initializable {
     private int avalailableProperties(ArrayList<AirbnbListing> listings){
         return listings.size();
     }
+<<<<<<< HEAD
 
+
+    //Set Stats
+
+=======
+
+>>>>>>> 921f88d555ce435d042872250178d73d6ebaaf18
     private void setStatAverageReviews(){
         statistic1.setText("The average number of reviews is: "+averageReviewCount());
     }
