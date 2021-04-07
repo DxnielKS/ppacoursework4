@@ -1,6 +1,9 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
+
 
 import java.lang.reflect.Array;
 import java.net.URL;
@@ -13,11 +16,17 @@ import java.util.Iterator;
 public class StatisticsController implements Initializable {
     private AirbnbDataLoader dataLoader;
     private ArrayList<AirbnbListing> propertyList;
+    private ArrayList<String> stats = new ArrayList<>();
 
     @FXML private Label statistic1;
     @FXML private Label statistic2;
     @FXML private Label statistic3;
     @FXML private Label statistic4;
+
+    @FXML private Button left1,left2,left3,left4;
+    @FXML private Button right1,right2,right3,right4;
+
+    int count = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -25,10 +34,20 @@ public class StatisticsController implements Initializable {
         propertyList = new ArrayList<>();
         propertyList = dataLoader.load();
         propertyList = filter(propertyList);
-        setStatAverageReviews();
-        setStatAvailableProperties();
-        setStatNumberOfHouses();
-        setStatMostExpensive();
+
+        statistic1.setText(averageReviewCount(propertyList));
+        statistic2.setText( avalailableProperties(propertyList));
+        statistic3.setText(homesAndApartments(propertyList));
+        statistic4.setText(expensiveBorough(propertyList));
+
+        stats.add(averageReviewCount(propertyList));
+        stats.add(avalailableProperties(propertyList));
+        stats.add(homesAndApartments(propertyList));
+        stats.add(expensiveBorough(propertyList));
+        stats.add(mostCommonRoomType(propertyList));
+
+        count = 4;
+
     }
 
     /**
@@ -47,7 +66,7 @@ public class StatisticsController implements Initializable {
     /**
      * Most expensive borough
      */
-    public String expensiveBorough(ArrayList<AirbnbListing> listings) {
+    private String expensiveBorough(ArrayList<AirbnbListing> listings) {
 
         //Filter for distinct boroughs
         HashSet<String> distinctNeighbourhoods = new HashSet<>();
@@ -84,14 +103,14 @@ public class StatisticsController implements Initializable {
             }
         }
 
-        return returnString;
+        return ("The most expensive borough is: "+returnString);
     }  
 
     /**
      * The number of entire home and apartments (as opposed to private rooms)
      * @return number of homes and apartments (no private rooms)
      */
-    public int homesAndApartments(ArrayList<AirbnbListing> listings) {
+    private String homesAndApartments(ArrayList<AirbnbListing> listings) {
 
         //Find all those that are not a private room
         int count = 0;
@@ -100,13 +119,13 @@ public class StatisticsController implements Initializable {
                 count++;
             }
         }
-        return count;
+        return ("The number of houses or apartments is "+count);
     }
 
     /**
      * average number of reviews for each property
      */
-    public double averageReviewCount(ArrayList<AirbnbListing> propertyList){
+    private String averageReviewCount(ArrayList<AirbnbListing> propertyList){
         int sum = 0;
         int numOfProperties = 0;
         for (AirbnbListing listing: propertyList){
@@ -116,33 +135,133 @@ public class StatisticsController implements Initializable {
 
         //Whenever we are dividing by zero
         try {
-            return (sum/numOfProperties);
+            return ("The average number of reviews per property is: "+(sum/numOfProperties));
         } catch (ArithmeticException e) {
-            return 0;
+            return "0";
         }
     }
 
     /**
      * number of available properties
      */
-    public int avalailableProperties(ArrayList<AirbnbListing> listings){
-        return listings.size();
+    private String avalailableProperties(ArrayList<AirbnbListing> listings){
+        return ("The number of available properties is: "+listings.size());
+
     }
 
-    private void setStatAverageReviews(){
-        statistic1.setText("The average number of reviews is: "+averageReviewCount(propertyList));
+    /**
+     *
+     * @return
+     */
+    private String mostCommonRoomType(ArrayList<AirbnbListing> listings) {
+        int countPrivateRoom = 0;
+        int countHouse = 0;
+        for (int i =0; i < listings.size(); i++) {
+            if (listings.get(i).getRoom_type().equals("Private room")) {
+                countPrivateRoom++;
+            } else {countHouse++;}
+        }
+        if (countPrivateRoom > countHouse) {
+            return "The most common room type is: Private room";
+        } else return "The most common room type is: Entirehome/apt";
     }
 
-    private void setStatAvailableProperties(){
-        statistic2.setText("The number of available properties is: " + avalailableProperties(propertyList));
+
+    /**
+     * For when the right buttons are pressed
+     */
+    @FXML
+    private void goRight(ActionEvent event) {
+        double x= ((Button)event.getSource()).getTranslateZ();
+        int prevCount = 0;
+        if (x == 1) {
+            //righ1
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic1.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic1.setText(stats.get(count));
+            count = prevCount;
+        } else if(x== 2){
+            //right2
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic2.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic2.setText(stats.get(count));
+            count = prevCount;
+        } else  if(x == 3) {
+            ///right3
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic3.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic3.setText(stats.get(count));
+            count = prevCount;
+        }else if (x == 4) {
+            //rigt4
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic4.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic4.setText(stats.get(count));
+            count = prevCount;
+        }
     }
 
-    private void setStatNumberOfHouses(){
-        statistic3.setText("The number of Homes and Apartments is: " + homesAndApartments(propertyList));
+    /**
+     * For when the left buttons are pressed
+     */
+    @FXML
+    private void goLeft(ActionEvent event) {
+        double x= ((Button)event.getSource()).getTranslateZ();
+        int prevCount = 0;
+        if (x == 1) {
+            //left1
+
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic1.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic1.setText(stats.get(count));
+            count = prevCount;
+
+        } else if(x== 2){
+            //left2
+
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic2.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic2.setText(stats.get(count));
+            count = prevCount;
+
+        } else  if(x == 3) {
+            //left3
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic3.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic3.setText(stats.get(count));
+            count = prevCount;
+        }else if (x == 4) {
+            //left4
+            for (int i = 0;i < stats.size();i++) {
+                if (stats.get(i).equals(statistic4.getText())) {
+                    prevCount = i;
+                }
+            }
+            statistic4.setText(stats.get(count));
+            count = prevCount;
+        }
     }
 
-    private void setStatMostExpensive(){
-        statistic4.setText("The most expensive borough is: "+expensiveBorough(propertyList));
-    }
 
 }

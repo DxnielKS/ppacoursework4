@@ -61,6 +61,7 @@ public class Controller implements Initializable{
     @FXML
     private void goLeft(ActionEvent event) {
         firstPageFlag = true;
+        System.out.println(count);
         if (count == 0) {
             if (validPriceRange) {
                 displayMap();
