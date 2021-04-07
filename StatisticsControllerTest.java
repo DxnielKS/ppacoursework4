@@ -84,7 +84,37 @@ public class StatisticsControllerTest
         java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
         assertEquals("The cheapest borough is: Havering", statisti2.cheapestBorough(arrayLis1));
     }
+
+    @Test
+    public void avgHostListing()
+    {
+        StatisticsController statisti2 = new StatisticsController();
+        AirbnbDataLoader airbnbDa1 = new AirbnbDataLoader();
+        java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
+        assertEquals("The average minimum nights is: 3", statisti2.averageMinNights(arrayLis1));
+    }
+
+    @Test
+    public void mostCommonRoom()
+    {
+        AirbnbDataLoader airbnbDa1 = new AirbnbDataLoader();
+        java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
+        StatisticsController statisti2 = new StatisticsController();
+        assertEquals("The most common room type is: Entirehome/apt", statisti2.mostCommonRoomType(arrayLis1));
+    }
+
+    @Test
+    public void avgMinNights()
+    {
+        AirbnbDataLoader airbnbDa1 = new AirbnbDataLoader();
+        StatisticsController statisti2 = new StatisticsController();
+        java.util.ArrayList<AirbnbListing> arrayLis1 = airbnbDa1.load();
+        assertEquals("The average minimum nights is: 3", statisti2.averageMinNights(arrayLis1));
+    }
 }
+
+
+
 
 
 
